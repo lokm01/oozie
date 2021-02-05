@@ -319,7 +319,7 @@ class SparkArgsExtractor {
             jarPath = jarFilter.getApplicationJar();
 
             final String cachedFiles = StringUtils.join(decodeUriPaths(fixedFileUris), OPT_VALUE_SEPARATOR);
-            if (cachedFiles != null && !cachedFiles.isEmpty()) {
+            if (!yarnClusterMode && (cachedFiles != null && !cachedFiles.isEmpty())) {
                 sparkArgs.add(FILES_OPTION);
                 sparkArgs.add(cachedFiles);
             }
